@@ -9,4 +9,4 @@ export const SearchIcon = 'src/assets/icons/search.svg'
 export const VideoLibraryIcon = 'src/assets/icons/video_library.svg'
 
 // LOGO
-export const LOGO = 'src/assets/logo/Star_Wars_Logo 1.svg'
+export const LOGO = 'src/assets/logo/Star_Wars_Logo 1.png'

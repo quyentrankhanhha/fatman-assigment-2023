@@ -9,12 +9,15 @@ import {
   Box,
   AppBar,
   IconButton,
-  Drawer
+  Drawer,
+  Container,
+  Typography
 } from '@mui/material'
 import { useState } from 'react'
 import sidebar from '../../constants/sidebar'
-import { AccountIcon } from '../../constants/image'
+import { AccountIcon, LOGO } from '../../constants/image'
 import pallette from '../../constants/pallete'
+import { NavLink } from 'react-router-dom'
 const drawerWidth = 232
 
 interface SidebarProps {
@@ -31,15 +34,25 @@ export default function Sidebar(props: SidebarProps) {
 
   const drawer = (
     <div>
-      <Toolbar />
-      <List>
+      <Container>
+        <img src={LOGO} alt='logo website' />
+      </Container>
+
+      <List component='nav'>
         {sidebar.map((info) => (
-          <ListItem key={info.name}>
-            <ListItemButton>
+          <ListItem
+            component={NavLink}
+            to={info.path}
+            activeClassName={({ isActive }: { isActive: boolean }): string => (isActive ? 'active' : 'non_active')}
+            key={info.name}
+            sx={{ color: pallette.gray, '&:hover': { backgroundColor: pallette.yellow, color: pallette.gray } }}
+          >
+            <ListItemButton disableRipple sx={{ '&:hover': { bgcolor: 'transparent' } }}>
               <ListItemIcon>
                 <img src={info.icon} alt='menu' />
               </ListItemIcon>
               <ListItemText
+                disableTypography
                 primary={info.name}
                 primaryTypographyProps={{
                   color: 'secondary'
@@ -49,8 +62,6 @@ export default function Sidebar(props: SidebarProps) {
           </ListItem>
         ))}
         <Divider variant='middle' sx={{ opacity: '0.2', border: '1px solid #FBFBFB' }} />
-
-        <p>a</p>
       </List>
     </div>
   )
@@ -68,7 +79,8 @@ export default function Sidebar(props: SidebarProps) {
           background: pallette.black
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: 'flex-end' }}>
+          <Typography>Darth</Typography>
           <IconButton
             size='large'
             aria-label='account of current user'

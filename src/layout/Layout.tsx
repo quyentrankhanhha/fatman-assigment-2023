@@ -8,7 +8,6 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
     <div>
-      <p>test</p>
       <Sidebar />
       <main>{children}</main>
     </div>
