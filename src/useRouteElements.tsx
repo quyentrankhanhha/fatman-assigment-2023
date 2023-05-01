@@ -1,12 +1,20 @@
 import { useRoutes } from 'react-router-dom'
-import Layout from './layout/Layout'
 import Resources from './pages/Resources'
 import Starship from './pages/Starship'
+import Layout from './layout'
 
 export default function useRouteElements() {
   const routeElements = useRoutes([
     {
-      path: 'resources',
+      path: '/',
+      element: (
+        <Layout>
+          <Resources />
+        </Layout>
+      )
+    },
+    {
+      path: 'people',
       element: (
         <Layout>
           <Resources />

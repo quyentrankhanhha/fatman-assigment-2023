@@ -1,35 +1,28 @@
-import {
-  Toolbar,
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Box,
-  AppBar,
-  IconButton,
-  Drawer,
-  Container,
-  Typography
-} from '@mui/material'
+import { Divider, List, Box, Drawer, Container } from '@mui/material'
 import { useState } from 'react'
+import { v4 as uuid } from 'uuid'
 import sidebar from '../../constants/sidebar'
-import { AccountIcon, LOGO } from '../../constants/image'
-import pallette from '../../constants/pallete'
-import { NavLink } from 'react-router-dom'
-const drawerWidth = 232
+import { LOGO } from '../../constants/image'
+import pallette from '../../constants/palette'
+import StyledListItem from '../StyledListItem'
+import NestedListItem from '../NestedListItem'
+import { InitialStateI } from 'src/types/listItem.type'
+import size from 'src/constants/size'
 
 interface SidebarProps {
   window?: () => Window
+  mobileOpen: boolean
+  handleDrawerToggle: () => void
 }
 
-export default function Sidebar(props: SidebarProps) {
-  const { window } = props
-  const [mobileOpen, setMobileOpen] = useState<boolean>(false)
+const initialState: InitialStateI = Object.fromEntries(sidebar.map((i) => [i.name, false]))
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen)
+export default function Sidebar(props: SidebarProps) {
+  const { window, mobileOpen, handleDrawerToggle } = props
+  const [openSubMenu, setOpenSubMenu] = useState(initialState)
+
+  const handleClickSubMenu = (itemName: string) => {
+    setOpenSubMenu((o) => ({ ...initialState, [itemName]: !o[itemName] }))
   }
 
   const drawer = (
@@ -39,29 +32,32 @@ export default function Sidebar(props: SidebarProps) {
       </Container>
 
       <List component='nav'>
-        {sidebar.map((info) => (
-          <ListItem
-            component={NavLink}
-            to={info.path}
-            activeClassName={({ isActive }: { isActive: boolean }): string => (isActive ? 'active' : 'non_active')}
-            key={info.name}
-            sx={{ color: pallette.gray, '&:hover': { backgroundColor: pallette.yellow, color: pallette.gray } }}
-          >
-            <ListItemButton disableRipple sx={{ '&:hover': { bgcolor: 'transparent' } }}>
-              <ListItemIcon>
-                <img src={info.icon} alt='menu' />
-              </ListItemIcon>
-              <ListItemText
-                disableTypography
-                primary={info.name}
-                primaryTypographyProps={{
-                  color: 'secondary'
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {sidebar.slice(0, 3).map((info) => {
+          if (info.subMenu) {
+            return (
+              <div key={uuid()}>
+                <StyledListItem info={info} handleClickSubMenu={handleClickSubMenu} openSubMenu={openSubMenu} />
+                <NestedListItem name={info.name} openSubMenu={openSubMenu} subMenu={info.subMenu} key={uuid()} />
+              </div>
+            )
+          } else {
+            return <StyledListItem info={info} key={uuid()} />
+          }
+        })}
         <Divider variant='middle' sx={{ opacity: '0.2', border: '1px solid #FBFBFB' }} />
+        <div key={uuid()}>
+          <StyledListItem info={sidebar[3]} handleClickSubMenu={handleClickSubMenu} openSubMenu={openSubMenu} />
+          {sidebar[3].subMenu ? (
+            <NestedListItem
+              name={sidebar[3].name}
+              openSubMenu={openSubMenu}
+              subMenu={sidebar[3].subMenu}
+              key={uuid()}
+            />
+          ) : (
+            <></>
+          )}
+        </div>
       </List>
     </div>
   )
@@ -69,56 +65,32 @@ export default function Sidebar(props: SidebarProps) {
   const container = window !== undefined ? () => window().document.body : undefined
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <AppBar
-        position='fixed'
+    <Box component='nav' sx={{ width: { sm: size.drawerWidth }, flexShrink: { sm: 0 } }} aria-label='mailbox folders'>
+      <Drawer
+        container={container}
+        variant='temporary'
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true // Better open performance on mobile.
+        }}
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          height: '56px',
-          ml: { sm: `${drawerWidth}px` },
-          background: pallette.black
+          display: { xs: 'block', sm: 'none' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: size.drawerWidth, bgcolor: pallette.black }
         }}
       >
-        <Toolbar sx={{ justifyContent: 'flex-end' }}>
-          <Typography>Darth</Typography>
-          <IconButton
-            size='large'
-            aria-label='account of current user'
-            aria-controls='menu-appbar'
-            aria-haspopup='true'
-            color='inherit'
-          >
-            <img src={AccountIcon} alt='account icon' />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Box component='nav' sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }} aria-label='mailbox folders'>
-        <Drawer
-          container={container}
-          variant='temporary'
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
-          }}
-        >
-          {drawer}
-        </Drawer>
-        <Drawer
-          variant='permanent'
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: pallette.black }
-          }}
-          open
-        >
-          {drawer}
-        </Drawer>
-      </Box>
+        {drawer}
+      </Drawer>
+      <Drawer
+        variant='permanent'
+        sx={{
+          display: { xs: 'none', sm: 'block' },
+          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: size.drawerWidth, bgcolor: pallette.black }
+        }}
+        open
+      >
+        {drawer}
+      </Drawer>
     </Box>
   )
 }

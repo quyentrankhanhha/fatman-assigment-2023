@@ -31,12 +31,12 @@ body {
   }
 }
 
-.active {
+.active div {
   color: #1c1e22 !important;
   background-color: #ffe81f !important;
 }
 
-.non_active {
+.inactive {
   color: '#FBFBFB';
 }
 
