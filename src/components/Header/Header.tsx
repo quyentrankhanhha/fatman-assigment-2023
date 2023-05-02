@@ -16,7 +16,7 @@ export default function Header(props: HeaderProps) {
       position='fixed'
       sx={{
         width: { sm: `calc(100% - ${size.drawerWidth}px)` },
-        height: '56px',
+        height: `${size.navHeight}px`,
         ml: { sm: `${size.drawerWidth}px` },
         background: pallette.black
       }}

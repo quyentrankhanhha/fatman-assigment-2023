@@ -65,7 +65,7 @@ export default function Sidebar(props: SidebarProps) {
   const container = window !== undefined ? () => window().document.body : undefined
 
   return (
-    <Box component='nav' sx={{ width: { sm: size.drawerWidth }, flexShrink: { sm: 0 } }} aria-label='mailbox folders'>
+    <Box component='nav' sx={{ width: { sm: size.drawerWidth }, flexShrink: { sm: 0 } }}>
       <Drawer
         container={container}
         variant='temporary'
@@ -76,7 +76,12 @@ export default function Sidebar(props: SidebarProps) {
         }}
         sx={{
           display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: size.drawerWidth, bgcolor: pallette.black }
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: size.drawerWidth,
+            bgcolor: pallette.black,
+            border: 'none'
+          }
         }}
       >
         {drawer}
@@ -85,7 +90,12 @@ export default function Sidebar(props: SidebarProps) {
         variant='permanent'
         sx={{
           display: { xs: 'none', sm: 'block' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: size.drawerWidth, bgcolor: pallette.black }
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: size.drawerWidth,
+            bgcolor: pallette.black,
+            border: 'none'
+          }
         }}
         open
       >
