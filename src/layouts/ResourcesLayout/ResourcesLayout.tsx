@@ -109,10 +109,10 @@ export default function ResourcesLayout({ children }: ResourcesLayoutProps) {
             ))}
           </Tabs>
         </Box>
-        <Box>
+        <Box sx={{ width: '400px' }}>
           <TextField
             fullWidth
-            sx={{ ml: 1 }}
+            sx={{ ml: 1, marginLeft: '0' }}
             placeholder='Search...'
             size='small'
             inputProps={{
