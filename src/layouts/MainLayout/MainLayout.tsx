@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../../components/Sidebar'
 import { Box, styled } from '@mui/material'
 import Header from 'src/components/Header'
 import size from 'src/constants/size'
 
-interface LayoutProps {
+interface MainLayoutProps {
   children?: React.ReactNode
 }
 
@@ -28,7 +28,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   marginTop: `${size.navHeight}px`
 }))
 
-export default function Layout({ children }: LayoutProps) {
+export default function MainLayout({ children }: MainLayoutProps) {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false)
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)

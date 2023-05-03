@@ -1,12 +1,12 @@
 import { DashboardIcon, ResourcesIcon, SettingIcon, VideoLibraryIcon } from './image'
 
 const sidebar = [
-  { name: 'Dashboard', icon: DashboardIcon, path: '/' },
-  { name: 'Movies', icon: VideoLibraryIcon, path: '/' },
+  { name: 'Dashboard', icon: DashboardIcon, path: '/dashboard' },
+  { name: 'Movies', icon: VideoLibraryIcon, path: '/movies' },
   {
     name: 'Resources',
     icon: ResourcesIcon,
-    path: '/people',
+    path: '/',
     subMenu: [
       { name: 'People', path: '/people' },
       { name: 'Starships', path: '/starships' },
@@ -16,11 +16,8 @@ const sidebar = [
   {
     name: 'Settings',
     icon: SettingIcon,
-    path: '/',
-    subMenu: [
-      { name: 'Profile', path: '/' },
-      { name: 'Starships', path: '/starships' }
-    ]
+    path: '/settings',
+    subMenu: [{ name: 'Profile', path: '/' }]
   }
 ]
 

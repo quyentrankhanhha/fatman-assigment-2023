@@ -8,8 +8,11 @@ const StyledOutlinedButton = styled(Button)({
   border: '1px solid rgba(28,30,34,0.5)',
   margin: '0 12px',
   padding: '9px 24px',
+  fontWeight: '600',
+  lineHeight: '22px',
   '&:hover': {
-    border: '1px solid rgba(28,30,34,0.5)'
+    border: '1px solid rgba(28,30,34,0.5)',
+    backgroundColor: '#fff'
   },
   '&:active': {
     boxShadow: 'none',
@@ -28,13 +31,13 @@ const StyledContainedButton = styled(Button)({
   color: 'rgba(28,30,34,0.8)',
   margin: '0 12px',
   padding: '9px 24px',
+  fontWeight: '600',
+  lineHeight: '22px',
   '&:hover': {
-    border: 'none',
-    backgroundColor: '#FFE81F'
+    border: 'none'
   },
   '&:active': {
     boxShadow: 'none',
-    backgroundColor: '#FFE81F',
     borderColor: 'none'
   },
   '&:focus': {

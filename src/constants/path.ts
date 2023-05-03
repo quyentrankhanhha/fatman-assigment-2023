@@ -1,6 +1,6 @@
 const path = {
   resources: '/people',
-  starship: '/starship',
+  starship: '/starships',
   people: '/people'
 } as const
 

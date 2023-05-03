@@ -1,32 +1,46 @@
 import { useRoutes } from 'react-router-dom'
-import Resources from './pages/Resources'
-import Starship from './pages/Starship'
-import Layout from './layout'
+import Starships from './pages/Starships'
+import People from './pages/People'
+import MainLayout from './layouts/MainLayout'
+import ResourcesLayout from './layouts/ResourcesLayout'
 
 export default function useRouteElements() {
   const routeElements = useRoutes([
     {
       path: '/',
       element: (
-        <Layout>
-          <Resources />
-        </Layout>
+        <MainLayout>
+          <ResourcesLayout />
+        </MainLayout>
       )
     },
+    {
+      path: 'resources',
+      element: (
+        <MainLayout>
+          <ResourcesLayout />
+        </MainLayout>
+      )
+    },
+
     {
       path: 'people',
       element: (
-        <Layout>
-          <Resources />
-        </Layout>
+        <MainLayout>
+          <ResourcesLayout>
+            <People />
+          </ResourcesLayout>
+        </MainLayout>
       )
     },
     {
-      path: 'starship',
+      path: 'starships',
       element: (
-        <Layout>
-          <Starship />
-        </Layout>
+        <MainLayout>
+          <ResourcesLayout>
+            <Starships />
+          </ResourcesLayout>
+        </MainLayout>
       )
     }
   ])

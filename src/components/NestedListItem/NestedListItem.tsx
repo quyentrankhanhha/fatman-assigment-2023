@@ -8,6 +8,7 @@ interface NestedListItemProps {
   openSubMenu: InitialStateI
   name: string
 }
+
 export default function NestedListItem(props: NestedListItemProps) {
   const { subMenu, openSubMenu, name } = props
   return (
