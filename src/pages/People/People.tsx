@@ -1,3 +1,10 @@
+import { Box } from '@mui/material'
+import PeopleTable from './components/PeopleTable'
+
 export default function People() {
-  return <div>People</div>
+  return (
+    <Box>
+      <PeopleTable />
+    </Box>
+  )
 }

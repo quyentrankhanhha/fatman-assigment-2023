@@ -10,13 +10,12 @@ const StyledOutlinedButton = styled(Button)({
   padding: '9px 24px',
   fontWeight: '600',
   lineHeight: '22px',
+  backgroundColor: '#fff',
   '&:hover': {
-    border: '1px solid rgba(28,30,34,0.5)',
-    backgroundColor: '#fff'
+    border: '1px solid rgba(28,30,34,0.5)'
   },
   '&:active': {
     boxShadow: 'none',
-    backgroundColor: '#fff',
     borderColor: 'rgba(28,30,34,0.5)'
   },
   '&:focus': {

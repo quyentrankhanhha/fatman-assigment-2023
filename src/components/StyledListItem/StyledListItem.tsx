@@ -17,7 +17,7 @@ interface StyledListItemProps {
 const StyledListItemButton = styled(ListItemButton)(`
 &:hover {
   background-color: ${palette.yellow};
-  color: ${palette.gray}
+  color: ${palette.lightGray}
 }
 `)
 
@@ -71,7 +71,7 @@ export default function StyledListItem({ info, handleClickSubMenu, openSubMenu }
 
   return (
     <NavLink to={info.path} className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
-      <ListItem key={info.name} sx={{ color: palette.gray, paddingX: 0, '&:hover': { color: palette.gray } }}>
+      <ListItem key={info.name} sx={{ color: palette.lightGray, paddingX: 0, '&:hover': { color: palette.lightGray } }}>
         {info.icon ? listIcon : listWithoutIcon}
       </ListItem>
     </NavLink>

@@ -112,7 +112,7 @@ export default function ResourcesLayout({ children }: ResourcesLayoutProps) {
         <Box sx={{ width: '400px' }}>
           <TextField
             fullWidth
-            sx={{ ml: 1, marginLeft: '0' }}
+            sx={{ ml: 1, marginLeft: '0', bgcolor: '#fff', color: 'rgba(28, 30, 34, 0.8)' }}
             placeholder='Search...'
             size='small'
             inputProps={{
@@ -121,7 +121,7 @@ export default function ResourcesLayout({ children }: ResourcesLayoutProps) {
             InputProps={{
               endAdornment: (
                 <InputAdornment position='end'>
-                  <IconButton>
+                  <IconButton sx={{ color: 'rgba(28, 30, 34, 0.5)' }}>
                     <Search />
                   </IconButton>
                 </InputAdornment>
