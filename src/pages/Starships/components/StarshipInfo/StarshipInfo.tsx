@@ -1,4 +1,6 @@
 import { Grid, Table, TableBody, TableCell, TableRow, Typography, styled } from '@mui/material'
+import { Star } from '@mui/icons-material'
+import palette from 'src/constants/palette'
 
 const StyledTypoTitle = styled(Typography)({
   color: 'rgba(28, 30, 34, 0.8) !important',
@@ -113,7 +115,14 @@ export default function StarshipInfo({ info }: { info: StarshipInfoProps }) {
           </TableRow>
           <TableRow>
             <StyledTableCell>
-              <StyledTypoName>{info.classStarship}</StyledTypoName>
+              {Array(info.classStarship)
+                .fill(0)
+                .map((_, index) => (
+                  <Star
+                    sx={{ fill: `${palette.yellow}`, stroke: `${palette.black}`, strokeWidth: '1px' }}
+                    key={index}
+                  />
+                ))}
             </StyledTableCell>
             <StyledTableCell>
               <StyledTypoName>{info.pilots}</StyledTypoName>

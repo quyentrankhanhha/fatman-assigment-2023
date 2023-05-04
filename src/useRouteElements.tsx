@@ -5,14 +5,23 @@ import MainLayout from './layouts/MainLayout'
 import ResourcesLayout from './layouts/ResourcesLayout'
 import { SearchContextProvider } from './contexts/search.content'
 import { Typography } from '@mui/material'
+import Home from './pages/Dashboard/Dashboard'
 
 export default function useRouteElements() {
   const routeElements = useRoutes([
     {
-      path: 'dashboard',
+      path: '',
       element: (
         <MainLayout>
-          <Typography>Dashboard</Typography>
+          <Home></Home>
+        </MainLayout>
+      )
+    },
+    {
+      path: 'movies',
+      element: (
+        <MainLayout>
+          <Home></Home>
         </MainLayout>
       )
     },
@@ -41,6 +50,14 @@ export default function useRouteElements() {
       element: (
         <MainLayout>
           <Starships />
+        </MainLayout>
+      )
+    },
+    {
+      path: 'settings',
+      element: (
+        <MainLayout>
+          <Home></Home>
         </MainLayout>
       )
     }

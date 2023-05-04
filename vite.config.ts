@@ -13,7 +13,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      src: path.resolve(__dirname, './src')
+      src: path.resolve(__dirname, './src'),
+      '@material-ui/icons': '@material-ui/icons/esm'
     }
   }
 })

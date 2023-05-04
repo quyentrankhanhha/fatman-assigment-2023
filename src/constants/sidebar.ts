@@ -1,7 +1,7 @@
 import { DashboardIcon, ResourcesIcon, SettingIcon, VideoLibraryIcon } from './image'
 
 const sidebar = [
-  { name: 'Dashboard', icon: DashboardIcon, path: '/dashboard' },
+  { name: 'Dashboard', icon: DashboardIcon, path: '/' },
   { name: 'Movies', icon: VideoLibraryIcon, path: '/movies' },
   {
     name: 'Resources',
