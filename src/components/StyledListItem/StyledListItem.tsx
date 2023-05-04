@@ -30,7 +30,7 @@ export default function StyledListItem({ info, handleClickSubMenu, openSubMenu }
     handleClickSubMenu && openSubMenu ? (
       <StyledListItemButton disableRipple onClick={() => handleClickSubMenu(info.name)}>
         <StyledListItemIcon>
-          <img src={info.icon} alt='menu' />
+          <img src={info.icon} alt={info.name} />
         </StyledListItemIcon>
         <ListItemText
           disableTypography
@@ -44,7 +44,7 @@ export default function StyledListItem({ info, handleClickSubMenu, openSubMenu }
     ) : (
       <StyledListItemButton disableRipple>
         <StyledListItemIcon>
-          <img src={info.icon} alt='menu' />
+          <img src={info.icon} alt={info.name} />
         </StyledListItemIcon>
         <ListItemText
           disableTypography

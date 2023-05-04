@@ -1,12 +1,12 @@
 // ICONS
-export const ActionIcon = 'src/assets/icons/action_button.svg'
-export const AccountIcon = 'src/assets/icons/account_circle_filled.svg'
-export const DashboardIcon = 'src/assets/icons/dashboard.svg'
-export const ResourcesIcon = 'src/assets/icons/resources.svg'
-export const SearchIcon = 'src/assets/icons/search.svg'
-export const VideoLibraryIcon = 'src/assets/icons/video_library.svg'
-export const SettingIcon = 'src/assets/icons/setting.svg'
+export const ActionIcon = '/assets/icons/action_button.svg'
+export const AccountIcon = '/assets/icons/account_circle_filled.svg'
+export const DashboardIcon = '/assets/icons/dashboard.svg'
+export const ResourcesIcon = '/assets/icons/resources.svg'
+export const SearchIcon = '/assets/icons/search.svg'
+export const VideoLibraryIcon = '/assets/icons/video_library.svg'
+export const SettingIcon = '/assets/icons/setting.svg'
 
 // LOGO
-export const LOGO = 'src/assets/img/Star_Wars_Logo 1.png'
-export const STARSHIP = 'src/assets/img/starship.png'
+export const LOGO = '/assets/img/Star_Wars_Logo 1.png'
+export const STARSHIP = '/assets/img/starship.png'
