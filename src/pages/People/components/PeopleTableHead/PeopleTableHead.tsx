@@ -1,5 +1,5 @@
 import { FullPeopleData, Order } from 'src/types/people.type'
-import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel, Typography } from '@mui/material'
+import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material'
 import { visuallyHidden } from '@mui/utils'
 import table from 'src/constants/table'
 import palette from 'src/constants/palette'
@@ -12,7 +12,7 @@ interface PeopleTableHeadProps {
 
 export default function PeopleTableHead(props: PeopleTableHeadProps) {
   const { order, orderBy, onRequestSort } = props
-  const createSortHandler = (property: keyof FullPeopleData | any) => (event: React.MouseEvent<unknown>) => {
+  const createSortHandler = (property: keyof FullPeopleData) => (event: React.MouseEvent<unknown>) => {
     onRequestSort(event, property)
   }
 

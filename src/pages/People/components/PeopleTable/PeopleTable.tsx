@@ -73,10 +73,14 @@ export default function PeopleTable() {
   }
 
   const searchResult = people.filter((person) => {
+    const starshipMatches = person.starship.some((starship) =>
+      starship.toLowerCase().includes(searchContext.query.toLowerCase())
+    )
     if (
       person.name.toLowerCase().includes(searchContext.query.toLowerCase()) ||
       String(person.height).includes(searchContext.query) ||
-      String(person.weight).includes(searchContext.query)
+      String(person.weight).includes(searchContext.query) ||
+      starshipMatches
     ) {
       return person
     }
