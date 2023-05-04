@@ -35,7 +35,6 @@ interface StarshipInfoProps {
 }
 
 export default function StarshipInfo({ info }: { info: StarshipInfoProps }) {
-  console.log(info)
   return (
     <Grid item xs={6}>
       <Table>
