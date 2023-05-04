@@ -39,7 +39,9 @@ export default function PeopleTableBody(props: PeopleTableBodyProps) {
           whiteSpace: 'nowrap'
         }}
       >
-        <Link to='/starships'>{row.starship}</Link>
+        <Link to='/starships' aria-label='go to starship page'>
+          {row.starship}
+        </Link>
       </TableCell>
       <TableCell sx={{ padding: '16px', width: 'auto' }}>{convertTime(row.created)}</TableCell>
     </TableRow>

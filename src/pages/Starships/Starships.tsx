@@ -14,7 +14,9 @@ export default function Starships() {
         </Typography>
         <Stack direction='row'>
           <Link to='/people'>
-            <StyledOutlinedButton variant='outlined'>Cancel</StyledOutlinedButton>
+            <StyledOutlinedButton variant='outlined' aria-describedby='get back to people tab'>
+              Cancel
+            </StyledOutlinedButton>
           </Link>
 
           <StyledContainedButton
@@ -28,6 +30,7 @@ export default function Starships() {
                 bgcolor: `${palette.gray}`
               }
             }}
+            aria-describedby='save'
           >
             Save
           </StyledContainedButton>
@@ -38,7 +41,8 @@ export default function Starships() {
         <Grid item xs={6}>
           <img
             src={starships[0].image}
-            alt='starship img'
+            alt='starship imgage'
+            aria-labelledby='starship imgage'
             style={{ width: '100%', height: '100%', objectFit: 'contain' }}
           />
         </Grid>

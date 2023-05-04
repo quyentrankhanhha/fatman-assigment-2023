@@ -7,7 +7,11 @@ export default function Dashboard() {
       <Typography variant='h6'>Fatman assignment 2023</Typography>
       <Typography>
         You can find my code in my{' '}
-        <Link style={{ fontWeight: '600' }} to='https://github.com/quyentrankhanhha/fatman-assigment-2023'>
+        <Link
+          style={{ fontWeight: '600' }}
+          to='https://github.com/quyentrankhanhha/fatman-assigment-2023'
+          aria-label='Github link'
+        >
           Github link
         </Link>
         ! I’m eager to receive your feedback through my email quyentrankhanhha@gmail.com

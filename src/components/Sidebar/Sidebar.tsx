@@ -28,7 +28,12 @@ export default function Sidebar(props: SidebarProps) {
   const drawer = (
     <div>
       <Container sx={{ paddingTop: '24px', textAlign: 'center' }}>
-        <img src={LOGO} alt='logo website' />
+        <img
+          src={LOGO}
+          alt='logo website'
+          aria-labelledby='logo website'
+          style={{ color: 'white', fontSize: '14px' }}
+        />
       </Container>
 
       <List component='nav'>

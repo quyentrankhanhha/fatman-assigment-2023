@@ -30,7 +30,12 @@ export default function StyledListItem({ info, handleClickSubMenu, openSubMenu }
     handleClickSubMenu && openSubMenu ? (
       <StyledListItemButton disableRipple onClick={() => handleClickSubMenu(info.name)}>
         <StyledListItemIcon>
-          <img src={info.icon} alt={info.name} />
+          <img
+            src={info.icon}
+            alt={info.name}
+            aria-labelledby={`${info.name} icon`}
+            style={{ color: 'white', fontSize: '14px' }}
+          />
         </StyledListItemIcon>
         <ListItemText
           disableTypography
@@ -44,7 +49,12 @@ export default function StyledListItem({ info, handleClickSubMenu, openSubMenu }
     ) : (
       <StyledListItemButton disableRipple>
         <StyledListItemIcon>
-          <img src={info.icon} alt={info.name} />
+          <img
+            src={info.icon}
+            alt={info.name}
+            aria-labelledby={`${info.name} icon`}
+            style={{ color: 'white', fontSize: '14px' }}
+          />
         </StyledListItemIcon>
         <ListItemText
           disableTypography

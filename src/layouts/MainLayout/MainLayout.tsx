@@ -24,8 +24,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: `${size.drawerWidth}px`
-  }),
-  marginTop: `${size.navHeight}px`
+  })
 }))
 
 export default function MainLayout({ children }: MainLayoutProps) {

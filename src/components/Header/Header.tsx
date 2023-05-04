@@ -40,7 +40,12 @@ export default function Header(props: HeaderProps) {
             aria-haspopup='true'
             color='inherit'
           >
-            <img src={AccountIcon} alt='account icon' />
+            <img
+              src={AccountIcon}
+              alt='account icon'
+              aria-labelledby='account icon'
+              style={{ color: 'white', fontSize: '14px' }}
+            />
           </IconButton>
         </Box>
       </Toolbar>
