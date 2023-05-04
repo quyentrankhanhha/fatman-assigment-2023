@@ -12,7 +12,8 @@ const StyledOutlinedButton = styled(Button)({
   lineHeight: '22px',
   backgroundColor: '#fff',
   '&:hover': {
-    border: '1px solid rgba(28,30,34,0.5)'
+    border: '1px solid rgba(28,30,34,0.5)',
+    backgroundColor: 'rgba(28,30,34,0.1)'
   },
   '&:active': {
     boxShadow: 'none',

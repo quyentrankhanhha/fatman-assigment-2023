@@ -27,7 +27,7 @@ export default function Sidebar(props: SidebarProps) {
 
   const drawer = (
     <div>
-      <Container>
+      <Container sx={{ paddingTop: '24px', textAlign: 'center' }}>
         <img src={LOGO} alt='logo website' />
       </Container>
 

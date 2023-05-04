@@ -40,9 +40,7 @@ export default function useRouteElements() {
       path: 'starships',
       element: (
         <MainLayout>
-          <ResourcesLayout>
-            <Starships />
-          </ResourcesLayout>
+          <Starships />
         </MainLayout>
       )
     }

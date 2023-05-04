@@ -65,10 +65,10 @@ export default function ResourcesLayout({ children }: ResourcesLayoutProps) {
             sx={{
               bgcolor: `${palette.yellow}`,
               '&:hover': {
-                backgroundColor: '#FFE81F'
+                bgcolor: `${palette.yellow}`
               },
               '&:active': {
-                backgroundColor: '#FFE81F'
+                bgcolor: `${palette.yellow}`
               }
             }}
           >
@@ -77,7 +77,7 @@ export default function ResourcesLayout({ children }: ResourcesLayoutProps) {
         </Stack>
       </Stack>
 
-      <Stack direction='row' justifyContent='space-between' alignItems='center' sx={{ margin: '17px 0' }}>
+      <Stack direction='row' justifyContent='space-between' alignItems='center' sx={{ padding: '32px 0' }}>
         <Box>
           <Tabs
             value={selectedTab}

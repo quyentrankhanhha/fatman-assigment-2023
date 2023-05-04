@@ -1,4 +1,5 @@
 import { Checkbox, TableCell, TableRow } from '@mui/material'
+import { Link } from 'react-router-dom'
 import palette from 'src/constants/palette'
 import { Data } from 'src/types/people.type'
 import convertTime from 'src/utils/convertTime'
@@ -25,9 +26,10 @@ export default function PeopleTableBody(props: PeopleTableBodyProps) {
       </TableCell>
       <TableCell sx={{ padding: '16px', width: 'auto' }}>{row.height}</TableCell>
       <TableCell sx={{ padding: '16px', width: 'auto' }}>{row.weight}</TableCell>
+
       <TableCell
         sx={{
-          color: `${palette.blue}`,
+          color: `${palette.blue} !important`,
           fontWeight: '600',
           textDecorationLine: 'underline',
           padding: '16px',
@@ -37,7 +39,7 @@ export default function PeopleTableBody(props: PeopleTableBodyProps) {
           whiteSpace: 'nowrap'
         }}
       >
-        {row.starship}
+        <Link to='/starships'>{row.starship}</Link>
       </TableCell>
       <TableCell sx={{ padding: '16px', width: 'auto' }}>{convertTime(row.created)}</TableCell>
     </TableRow>

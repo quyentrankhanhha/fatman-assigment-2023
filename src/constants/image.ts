@@ -8,4 +8,5 @@ export const VideoLibraryIcon = 'src/assets/icons/video_library.svg'
 export const SettingIcon = 'src/assets/icons/setting.svg'
 
 // LOGO
-export const LOGO = 'src/assets/logo/Star_Wars_Logo 1.png'
+export const LOGO = 'src/assets/img/Star_Wars_Logo 1.png'
+export const STARSHIP = 'src/assets/img/starship.png'
