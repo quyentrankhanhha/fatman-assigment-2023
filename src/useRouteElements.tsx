@@ -3,14 +3,16 @@ import Starships from './pages/Starships'
 import People from './pages/People'
 import MainLayout from './layouts/MainLayout'
 import ResourcesLayout from './layouts/ResourcesLayout'
+import { SearchContextProvider } from './contexts/search.content'
+import { Typography } from '@mui/material'
 
 export default function useRouteElements() {
   const routeElements = useRoutes([
     {
-      path: '/',
+      path: 'dashboard',
       element: (
         <MainLayout>
-          <ResourcesLayout />
+          <Typography>Dashboard</Typography>
         </MainLayout>
       )
     },
@@ -18,18 +20,19 @@ export default function useRouteElements() {
       path: 'resources',
       element: (
         <MainLayout>
-          <ResourcesLayout />
+          <Typography>Resources</Typography>
         </MainLayout>
       )
     },
-
     {
       path: 'people',
       element: (
         <MainLayout>
-          <ResourcesLayout>
-            <People />
-          </ResourcesLayout>
+          <SearchContextProvider>
+            <ResourcesLayout>
+              <People />
+            </ResourcesLayout>
+          </SearchContextProvider>
         </MainLayout>
       )
     },

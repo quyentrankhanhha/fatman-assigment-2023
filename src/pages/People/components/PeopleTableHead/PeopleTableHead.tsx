@@ -17,7 +17,13 @@ export default function PeopleTableHead(props: PeopleTableHeadProps) {
   }
 
   return (
-    <TableHead>
+    <TableHead
+      sx={{
+        '& .MuiTableCell-root': {
+          border: `1px solid ${palette.gray}`
+        }
+      }}
+    >
       <TableRow>
         <TableCell sx={{ width: '42px', padding: '0' }}>
           <Checkbox color='primary' inputProps={{ 'aria-label': 'select checkbox' }} />

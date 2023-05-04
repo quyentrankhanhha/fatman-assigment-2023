@@ -1,12 +1,13 @@
 import { Box, Typography, Tabs, Stack, Tab, TextField, IconButton, InputAdornment } from '@mui/material'
-import { useEffect, useState } from 'react'
-import { ArrowDropDown, Search } from '@mui/icons-material'
+import { useContext, useEffect, useState } from 'react'
+import { ArrowDropDown, Search, Close } from '@mui/icons-material'
 import { v4 as uuid } from 'uuid'
 import { Link, useLocation } from 'react-router-dom'
 import { StyledContainedButton, StyledOutlinedButton } from 'src/components/StyledButton/StyledButton'
 import palette from 'src/constants/palette'
 import tab from 'src/constants/tab'
 import indexToTabName from 'src/constants/indexToTabName'
+import { SearchContext } from 'src/contexts/search.content'
 
 interface TabPanelProps {
   children: React.ReactNode
@@ -38,7 +39,12 @@ export default function ResourcesLayout({ children }: ResourcesLayoutProps) {
   const location = useLocation()
   const pathname: string = location.pathname.slice(1)
 
-  const [selectedTab, setSelectedTab] = useState<number>(indexToTabName[pathname as keyof typeof indexToTabName])
+  const [selectedTab, setSelectedTab] = useState<number>(indexToTabName[pathname as keyof typeof indexToTabName] || 0)
+  const searchContext = useContext(SearchContext)
+
+  const searchQueryHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    searchContext.searchHandler(event.target.value)
+  }
 
   useEffect(() => {
     setSelectedTab(indexToTabName[pathname as keyof typeof indexToTabName])
@@ -121,12 +127,20 @@ export default function ResourcesLayout({ children }: ResourcesLayoutProps) {
             InputProps={{
               endAdornment: (
                 <InputAdornment position='end'>
-                  <IconButton sx={{ color: 'rgba(28, 30, 34, 0.5)' }}>
-                    <Search />
-                  </IconButton>
+                  {searchContext.query != '' ? (
+                    <IconButton sx={{ color: 'rgba(28, 30, 34, 0.5)' }} onClick={searchContext.cancelSearchHandler}>
+                      <Close />
+                    </IconButton>
+                  ) : (
+                    <IconButton sx={{ color: 'rgba(28, 30, 34, 0.5)' }}>
+                      <Search />
+                    </IconButton>
+                  )}
                 </InputAdornment>
               )
             }}
+            onChange={searchQueryHandler}
+            value={searchContext.query}
           />
         </Box>
       </Stack>

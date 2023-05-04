@@ -6,7 +6,7 @@ const sidebar = [
   {
     name: 'Resources',
     icon: ResourcesIcon,
-    path: '/',
+    path: '/resources',
     subMenu: [
       { name: 'People', path: '/people' },
       { name: 'Starships', path: '/starships' },
