@@ -49,7 +49,7 @@ export default function PeopleTable() {
   const rows = people.length
   const rowsPerPage = 5
 
-  const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof Data) => {
+  const handleRequestSort = (_event: React.MouseEvent<unknown>, property: keyof Data) => {
     const isAsc = orderBy === property && order === 'asc'
     setOrder(isAsc ? 'desc' : 'asc')
     setOrderBy(property)
@@ -60,7 +60,7 @@ export default function PeopleTable() {
     [order, orderBy, page, rowsPerPage]
   )
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage)
   }
 

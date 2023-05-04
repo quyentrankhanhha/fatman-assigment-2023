@@ -9,7 +9,7 @@ interface SearchContextProps {
 
 const initialSearchContext: SearchContextProps = {
   query: '',
-  searchHandler: (query: string) => {},
+  searchHandler: (_query: string) => {},
   cancelSearchHandler: () => {}
 }
 
