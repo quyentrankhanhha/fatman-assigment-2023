@@ -1,21 +1,31 @@
 import { Box, Table, TableBody, TableContainer, TableFooter, TablePagination, TableRow } from '@mui/material'
 import { useState, useMemo, useContext } from 'react'
 import { v4 as uuid } from 'uuid'
-
 import people from 'src/constants/people'
-import { Data, Order } from 'src/types/people.type'
+import { FullPeopleData, Order } from 'src/types/people.type'
 import PeopleTableHead from '../PeopleTableHead'
 import palette from 'src/constants/palette'
 import PeopleTablePagination from '../PeopleTablePagination'
 import PeopleTableBody from '../PeopleTableBody'
 import { SearchContext } from 'src/contexts/search.content'
 
-function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1
+function compare<Key extends keyof any>(
+  a: { [key in Key]: number | string | string[] },
+  b: { [key in Key]: number | string | string[] },
+  orderBy: Key
+): number {
+  if (orderBy === 'starship') {
+    return 0
   }
-  if (b[orderBy] > a[orderBy]) {
-    return 1
+
+  const aProp = a[orderBy]
+  const bProp = b[orderBy]
+
+  if (typeof aProp === 'string' && typeof bProp === 'string') {
+    return aProp.localeCompare(bProp)
+  }
+  if (typeof aProp === 'number' && typeof bProp === 'number') {
+    return aProp - bProp
   }
   return 0
 }
@@ -24,12 +34,10 @@ function getComparator<Key extends keyof any>(
   order: Order,
   orderBy: Key
 ): (a: { [key in Key]: number | string }, b: { [key in Key]: number | string }) => number {
-  return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy)
+  return order === 'desc' ? (a, b) => -compare(a, b, orderBy) : (a, b) => compare(a, b, orderBy)
 }
 
-function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) {
+function stableSort<T>(array: readonly FullPeopleData[], comparator: (a: T, b: T) => number) {
   const stabilizedThis = array.map((el, index) => [el, index] as [T, number])
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0])
@@ -43,13 +51,13 @@ function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) 
 
 export default function PeopleTable() {
   const [order, setOrder] = useState<Order>('asc')
-  const [orderBy, setOrderBy] = useState<keyof Data>('created')
+  const [orderBy, setOrderBy] = useState<keyof FullPeopleData>('created')
   const [page, setPage] = useState(0)
   const searchContext = useContext(SearchContext)
   const rows = people.length
   const rowsPerPage = 5
 
-  const handleRequestSort = (_event: React.MouseEvent<unknown>, property: keyof Data) => {
+  const handleRequestSort = (_event: React.MouseEvent<unknown>, property: keyof FullPeopleData) => {
     const isAsc = orderBy === property && order === 'asc'
     setOrder(isAsc ? 'desc' : 'asc')
     setOrderBy(property)
@@ -68,8 +76,7 @@ export default function PeopleTable() {
     if (
       person.name.toLowerCase().includes(searchContext.query.toLowerCase()) ||
       String(person.height).includes(searchContext.query) ||
-      String(person.weight).includes(searchContext.query) ||
-      person.starship.toLowerCase().includes(searchContext.query.toLowerCase())
+      String(person.weight).includes(searchContext.query)
     ) {
       return person
     }
@@ -85,7 +92,7 @@ export default function PeopleTable() {
           }
         }}
       >
-        {visibleRows.map((row) => {
+        {visibleRows.map((row: any) => {
           const labelId = `table-checkbox-${uuid()}`
           return <PeopleTableBody key={labelId} row={row} labelId={labelId} />
         })}

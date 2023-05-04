@@ -6,9 +6,10 @@ This is the assignment for the second round of interview in the Fatman Software 
 
 ## Built With
 
-- Material UI
+- React
 - React Router
 - Build tool: Vite
+- Material UI
 - Material Icons
 
 ## Getting Started

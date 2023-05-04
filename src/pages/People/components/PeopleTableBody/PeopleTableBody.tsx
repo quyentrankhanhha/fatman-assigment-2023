@@ -1,11 +1,11 @@
 import { Checkbox, TableCell, TableRow } from '@mui/material'
 import { Link } from 'react-router-dom'
 import palette from 'src/constants/palette'
-import { Data } from 'src/types/people.type'
+import { FullPeopleData } from 'src/types/people.type'
 import convertTime from 'src/utils/convertTime'
 
 interface PeopleTableBodyProps {
-  row: Data
+  row: FullPeopleData
   labelId: string
 }
 
@@ -39,9 +39,11 @@ export default function PeopleTableBody(props: PeopleTableBodyProps) {
           whiteSpace: 'nowrap'
         }}
       >
-        <Link to='/starships' aria-label='go to starship page'>
-          {row.starship}
-        </Link>
+        {row.starship.map((item, index) => (
+          <Link key={index} to='/starships' aria-label='go to starship page'>
+            {(index ? ', ' : '') + item}
+          </Link>
+        ))}
       </TableCell>
       <TableCell sx={{ padding: '16px', width: 'auto' }}>{convertTime(row.created)}</TableCell>
     </TableRow>

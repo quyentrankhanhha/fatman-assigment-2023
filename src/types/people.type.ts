@@ -1,9 +1,9 @@
 export type Order = 'asc' | 'desc'
 
-export interface Data {
+export interface FullPeopleData {
   name: string
   height: number
   weight: number
-  starship: string
+  starship: string[]
   created: string
 }

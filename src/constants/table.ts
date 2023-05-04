@@ -4,33 +4,37 @@ const table = {
       id: 'name',
       numeric: false,
       disablePadding: true,
-      label: 'Name'
+      label: 'Name',
+      sortable: true
     },
     {
       id: 'height',
       numeric: true,
       disablePadding: false,
-      label: 'Height'
+      label: 'Height',
+      sortable: true
     },
     {
       id: 'weight',
       numeric: true,
       disablePadding: false,
-      label: 'Weight'
+      label: 'Weight',
+      sortable: true
     },
     {
       id: 'starship',
       numeric: false,
       disablePadding: false,
-      label: 'Starship'
+      label: 'Starship',
+      sortable: false
     },
     {
       id: 'created',
       numeric: false,
       disablePadding: false,
-      label: 'Created'
+      label: 'Created',
+      sortable: true
     }
   ]
 } as const
-
 export default table
